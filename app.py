@@ -1,41 +1,73 @@
 import streamlit as st
-from agents import *
+import pandas as pd
 
-st.title("🇮🇳 BharatAssist AI")
+# Load dataset
+df = pd.read_csv("./assets/schemes.csv")
 
-age = st.number_input("Age", 18, 100)
-state = st.text_input("State")
-occupation = st.selectbox(
-    "Occupation",
-    ["Student", "Farmer", "Unemployed"]
+st.set_page_config(
+    page_title="BharatAssist AI",
+    page_icon="🇮🇳",
+    layout="wide"
 )
 
-income = st.number_input("Annual Income")
+st.title("🇮🇳 BharatAssist AI")
+st.subheader("Multi-Agent Citizen Welfare Navigator")
 
-if st.button("Find Schemes"):
+# User Inputs
+occupation = st.selectbox(
+    "Select Occupation",
+    sorted(df["occupation"].unique())
+)
 
-    profile = citizen_profiler(
-        age,
-        state,
-        occupation,
-        income
-    )
+income = st.number_input(
+    "Annual Income (₹)",
+    min_value=0,
+    value=100000
+)
 
-    schemes = scheme_finder(profile)
+state = st.text_input(
+    "State",
+    value="All"
+)
 
-    st.subheader("Eligible Schemes")
+if st.button("Find Eligible Schemes"):
 
-    for s in schemes:
-        st.success(
-            f"{s['name']} - {s['benefit']}"
-        )
+    results = df[
+        (df["occupation"] == occupation)
+        & (df["income_limit"] >= income)
+    ]
 
-    st.subheader("Required Documents")
+    if len(results) == 0:
+        st.warning("No schemes found for the selected profile.")
+    else:
+        st.success(f"Found {len(results)} eligible schemes")
 
-    for doc in document_agent():
-        st.write("✅", doc)
+        for _, scheme in results.iterrows():
 
-    st.subheader("Action Plan")
+            with st.container(border=True):
 
-    for step in planner_agent():
-        st.write("➡️", step)
+                st.subheader(scheme["name"])
+
+                st.write(
+                    f"**Benefit:** {scheme['benefit']}"
+                )
+
+                st.write(
+                    f"**Eligible Occupation:** {scheme['occupation']}"
+                )
+
+                st.write(
+                    f"**State:** {scheme['state']}"
+                )
+
+                docs = scheme["documents"].split(";")
+
+                st.write("### Required Documents")
+
+                for doc in docs:
+                    st.write(f"✅ {doc}")
+
+                st.link_button(
+                    "Apply Here",
+                    scheme["portal"]
+                )

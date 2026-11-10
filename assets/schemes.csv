@@ -1,0 +1,31 @@
+name,occupation,income_limit,state,benefit,documents,portal
+PM Kisan,Farmer,1000000,All,"₹6000 annual income support","Aadhaar;Bank Account;Land Records",https://pmkisan.gov.in
+National Scholarship Portal,Student,300000,All,"Scholarships for school, college and higher education students","Aadhaar;Income Certificate;Bonafide Certificate",https://scholarships.gov.in
+PM YASASVI,Student,250000,All,"Scholarship support for OBC/EBC/DNT students","Aadhaar;Income Certificate;Caste Certificate",https://scholarships.gov.in
+AICTE Pragati Scholarship,Student,800000,All,"Financial assistance for girl students in technical education","Aadhaar;Admission Proof;Bank Details",https://scholarships.gov.in
+AICTE Saksham Scholarship,Student,800000,All,"Scholarship for specially-abled students pursuing technical education","Aadhaar;Disability Certificate;Admission Proof",https://scholarships.gov.in
+Skill India,Unemployed,1000000,All,"Free skill development and certification programs","Aadhaar;Mobile Number",https://www.skillindia.gov.in
+PM Kaushal Vikas Yojana,Job Seeker,1000000,All,"Short-term skill training and certification","Aadhaar;Educational Qualification Proof",https://www.skillindia.gov.in
+PMEGP,Entrepreneur,1000000,All,"Subsidized loans for micro-enterprises","Aadhaar;PAN;Project Report",https://pmegp.msme.gov.in
+Udyam Registration,Business Owner,1000000,All,"MSME registration and government benefits","Aadhaar;PAN;Business Details",https://udyamregistration.gov.in
+Stand-Up India,Entrepreneur,1000000,All,"Bank loans for SC/ST and women entrepreneurs","Aadhaar;PAN;Business Proposal",https://www.standupmitra.in
+Startup India,Entrepreneur,1000000,All,"Startup recognition and support benefits","PAN;Business Registration;Pitch Deck",https://www.startupindia.gov.in
+Atal Pension Yojana,Worker,1000000,All,"Guaranteed pension after retirement","Aadhaar;Bank Account",https://www.npscra.nsdl.co.in
+PM SVANidhi,Street Vendor,1000000,All,"Collateral-free working capital loans","Aadhaar;Vendor Certificate",https://pmsvanidhi.mohua.gov.in
+Ayushman Bharat,Low Income Family,500000,All,"Health insurance coverage up to ₹5 lakh","Aadhaar;Ration Card",https://beneficiary.nha.gov.in
+e-Shram,Worker,1000000,All,"National database and social security benefits for workers","Aadhaar;Mobile Number;Bank Account",https://eshram.gov.in
+Sukanya Samriddhi Yojana,Parent,1000000,All,"High-interest savings scheme for girl child","Birth Certificate;Aadhaar;Bank Account",https://www.nsiindia.gov.in
+National Means Cum Merit Scholarship,Student,350000,All,"Scholarship for meritorious students from low-income families","Income Certificate;School Certificate;Aadhaar",https://scholarships.gov.in
+Post Matric Scholarship SC,Student,250000,All,"Financial assistance for SC students pursuing higher education","Caste Certificate;Income Certificate;Aadhaar",https://scholarships.gov.in
+Post Matric Scholarship ST,Student,250000,All,"Educational support for ST students","Caste Certificate;Income Certificate;Aadhaar",https://scholarships.gov.in
+Mudra Yojana,Entrepreneur,1000000,All,"Business loans up to ₹10 lakh","Aadhaar;PAN;Business Details",https://www.mudra.org.in
+National Apprenticeship Promotion Scheme,Job Seeker,1000000,All,"Apprenticeship opportunities with stipend support","Aadhaar;Education Certificates",https://www.apprenticeshipindia.gov.in
+Jan Dhan Yojana,Citizen,1000000,All,"Zero-balance bank account with financial inclusion benefits","Aadhaar;Mobile Number",https://pmjdy.gov.in
+Pradhan Mantri Awas Yojana,Low Income Family,600000,All,"Housing assistance for eligible families","Aadhaar;Income Certificate;Property Documents",https://pmaymis.gov.in
+National Social Assistance Programme,Senior Citizen,1000000,All,"Pension support for elderly and vulnerable citizens","Aadhaar;Age Proof;Bank Account",https://nsap.nic.in
+PM Matru Vandana Yojana,Pregnant Woman,800000,All,"Cash assistance for first childbirth","Aadhaar;Bank Account;Pregnancy Registration",https://pmmvy.wcd.gov.in
+Accessible India Campaign,Differently Abled,1000000,All,"Support for accessibility and inclusion","Disability Certificate;Aadhaar",https://disabilityaffairs.gov.in
+Kisan Credit Card,Farmer,1000000,All,"Low-interest agricultural credit","Aadhaar;Land Records;Bank Account",https://pmkisan.gov.in
+Soil Health Card Scheme,Farmer,1000000,All,"Free soil testing and crop recommendations","Aadhaar;Land Details",https://soilhealth.dac.gov.in
+National Career Service,Job Seeker,1000000,All,"Job matching and career guidance services","Aadhaar;Educational Certificates",https://www.ncs.gov.in
+Digital India Internship,Student,1000000,All,"Internship opportunities in government projects","College ID;Resume;Aadhaar",https://www.digitalindia.gov.in
