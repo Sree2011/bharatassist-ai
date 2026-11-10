@@ -99,50 +99,29 @@ def _client():
 
 
 def explain_and_plan(profile: dict, schemes: list[dict], language: str = "English") -> str:
-    """Generate a plain-language explanation and application roadmap."""
+    """Template-based explanation. No API key required."""
     if not schemes:
-        return (
-            "No schemes matched your profile. Try adjusting your occupation "
-            "or income, or check the near-miss schemes below."
-        )
+        return "No schemes matched your profile. Try adjusting your occupation or income."
 
-    context = "\n\n".join(
-        f"Scheme: {s['name']}\n"
-        f"Benefit: {s['benefit']}\n"
-        f"Eligibility: {s['eligibility_notes']}\n"
-        f"Documents: {', '.join(s['documents'])}\n"
-        f"Official portal: {s['portal']}"
-        for s in schemes
+    lines = [
+        f"Based on your profile — age {profile['age']}, "
+        f"{profile['occupation']}, annual income ₹{profile['income']:,}, "
+        f"{profile['state']} — here is what you may qualify for:\n"
+    ]
+
+    for s in schemes:
+        lines.append(f"### {s['name']}")
+        lines.append(f"**Benefit:** {s['benefit']}")
+        lines.append(f"**Why you qualify:** {' '.join(s['reasons'])}")
+        lines.append(f"**Documents:** {', '.join(s['documents'])}")
+        lines.append(f"**Apply at:** {s['portal']}")
+        lines.append("")
+
+    lines.append(
+        "_This is a prototype. Verify all details on the official portal "
+        "before applying._"
     )
-
-    prompt = f"""You are a welfare scheme advisor for Indian citizens.
-
-STRICT RULES:
-- Use ONLY the scheme information provided below.
-- Never invent a scheme, amount, deadline, or document.
-- If information is missing, say "verify on the official portal".
-- Do not guarantee approval.
-
-CITIZEN PROFILE
-Age: {profile['age']}
-Occupation: {profile['occupation']}
-Annual income: Rs {profile['income']:,}
-State: {profile['state']}
-
-SCHEMES
-{context}
-
-For each scheme, write:
-1. Why this citizen qualifies, in one sentence referencing their profile.
-2. A numbered application roadmap, naming the documents needed at each step.
-
-Keep each scheme under 180 words. Reply in {language}."""
-
-    response = _client().models.generate_content(
-        model="gemini-2.0-flash",
-        contents=prompt,
-    )
-    return response.text
+    return "\n".join(lines)
 
 
 def document_agent(scheme: dict) -> list[str]:

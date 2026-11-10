@@ -17,9 +17,7 @@ and struggle to understand eligibility rules and application steps.
 
 ## Architecture
 
-Filtering is deterministic Python, not an LLM call — eligibility rules
-should be auditable. The LLM is used only for explanation and roadmap
-generation, grounded strictly in retrieved scheme records.
+Note: Eligibility matching is deliberately rule-based rather than LLM-driven, so every verdict is auditable and reproducible. The LLM layer is optional and used only for natural-language explanation.
 
 ```mermaid
 flowchart LR
