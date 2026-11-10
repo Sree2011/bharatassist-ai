@@ -3,21 +3,25 @@ Project Name: BharatAssist AI
 Hackathon: BharatCode Build League
 
 Description:
-BharatAssist AI is a multi-agent citizen welfare navigator that helps Indian citizens discover government schemes, verify eligibility, understand required documents, and generate personalized action plans.
+BharatAssist AI is a multi-agent citizen welfare navigator that helps Indian
+citizens discover government schemes, verify eligibility, understand required
+documents, and generate personalized action plans.
 
 Built With:
 - Python
 - Streamlit
+- Google Gemini (gemini-2.0-flash)
 - Agentic AI
-- BharatCode API
 
 Problem Solved:
-Many citizens are unaware of welfare schemes and struggle to understand eligibility requirements and application processes.
+Many citizens are unaware of welfare schemes and struggle to understand
+eligibility requirements and application processes. BharatAssist AI matches
+citizens against a curated scheme database using explicit, auditable rules,
+explains why they qualify, and generates a personalized application roadmap
+in six Indian languages.
 
 Author:
 Sree Sai Nandini Gundraju
 
 GitHub Repository:
 https://github.com/Sree2011/bharatassist-ai
-
-Powered by BharatCode.

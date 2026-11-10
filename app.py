@@ -1,73 +1,102 @@
 import streamlit as st
-import pandas as pd
 
-# Load dataset
-df = pd.read_csv("./assets/schemes.csv")
+from agents import (
+    OCCUPATIONS,
+    STATES,
+    citizen_profiler,
+    document_agent,
+    explain_and_plan,
+    planner_agent,
+    scheme_finder,
+)
 
 st.set_page_config(
     page_title="BharatAssist AI",
     page_icon="🇮🇳",
-    layout="wide"
+    layout="wide",
 )
 
 st.title("🇮🇳 BharatAssist AI")
 st.subheader("Multi-Agent Citizen Welfare Navigator")
-
-# User Inputs
-occupation = st.selectbox(
-    "Select Occupation",
-    sorted(df["occupation"].unique())
+st.caption(
+    "Not a government website. Always verify details on the official portal "
+    "before applying."
 )
 
-income = st.number_input(
-    "Annual Income (₹)",
-    min_value=0,
-    value=100000
-)
+# ---------------------------------------------------------------- inputs
 
-state = st.text_input(
-    "State",
-    value="All"
-)
+with st.sidebar:
+    st.header("Your profile")
 
-if st.button("Find Eligible Schemes"):
+    age = st.number_input("Age", min_value=10, max_value=100, value=25)
+    occupation = st.selectbox("Occupation", OCCUPATIONS)
+    income = st.number_input(
+        "Annual family income (₹)",
+        min_value=0,
+        max_value=5000000,
+        value=100000,
+        step=10000,
+    )
+    state = st.selectbox("State", STATES)
+    language = st.selectbox(
+        "Explanation language",
+        ["English", "Hindi", "Tamil", "Bengali", "Telugu", "Marathi"],
+    )
 
-    results = df[
-        (df["occupation"] == occupation)
-        & (df["income_limit"] >= income)
-    ]
+    find = st.button("Find eligible schemes", type="primary", use_container_width=True)
 
-    if len(results) == 0:
-        st.warning("No schemes found for the selected profile.")
+# ---------------------------------------------------------------- results
+
+if find:
+    profile = citizen_profiler(age, state, occupation, income)
+    result = scheme_finder(profile)
+    eligible = result["eligible"]
+
+    if not eligible:
+        st.warning("No schemes matched your profile.")
     else:
-        st.success(f"Found {len(results)} eligible schemes")
+        st.success(f"Found {len(eligible)} scheme(s) you may qualify for.")
 
-        for _, scheme in results.iterrows():
-
+        for scheme in eligible:
             with st.container(border=True):
+                head, badge = st.columns([4, 1])
+                with head:
+                    st.subheader(scheme["name"])
+                with badge:
+                    st.caption(f"Verified {scheme['last_verified']}")
 
-                st.subheader(scheme["name"])
+                st.write(f"**Benefit:** {scheme['benefit']}")
 
-                st.write(
-                    f"**Benefit:** {scheme['benefit']}"
-                )
+                st.write("**Why you qualify**")
+                for reason in scheme["reasons"]:
+                    st.write(f"- {reason}")
 
-                st.write(
-                    f"**Eligible Occupation:** {scheme['occupation']}"
-                )
+                with st.expander("Required documents"):
+                    for doc in document_agent(scheme):
+                        st.write(f"✅ {doc}")
 
-                st.write(
-                    f"**State:** {scheme['state']}"
-                )
+                with st.expander("Application roadmap"):
+                    for i, step in enumerate(planner_agent(scheme), 1):
+                        st.write(f"{i}. {step}")
 
-                docs = scheme["documents"].split(";")
+                st.link_button("Open official portal", scheme["portal"])
 
-                st.write("### Required Documents")
+        st.divider()
+        if st.button("Generate personalised explanation and plan"):
+            with st.spinner("Thinking..."):
+                try:
+                    text = explain_and_plan(profile, eligible, language)
+                    st.markdown(text)
+                except Exception as exc:
+                    st.error(f"Could not generate explanation: {exc}")
 
-                for doc in docs:
-                    st.write(f"✅ {doc}")
-
-                st.link_button(
-                    "Apply Here",
-                    scheme["portal"]
-                )
+    if result["near_miss"]:
+        st.divider()
+        st.subheader("Close, but not eligible")
+        st.caption("These schemes have income limits you are just above.")
+        for scheme in result["near_miss"]:
+            with st.container(border=True):
+                st.write(f"**{scheme['name']}**")
+                for reason in scheme["reasons"]:
+                    st.write(f"- {reason}")
+                st.link_button("Check official rules", scheme["portal"])

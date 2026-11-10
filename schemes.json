@@ -1,23 +1,146 @@
 [
   {
+    "id": "pm-kisan",
+    "name": "PM Kisan Samman Nidhi",
+    "state": "All",
+    "occupations": ["Farmer"],
+    "income_limit": null,
+    "eligibility_notes": "Small and marginal landholding farmer families. Eligibility is based on landholding, not income. Excludes institutional landholders and income-tax payers.",
+    "benefit": "₹6,000 per year in three instalments of ₹2,000",
+    "documents": ["Aadhaar Card", "Land ownership records", "Bank passbook", "Mobile number linked to Aadhaar"],
+    "portal": "https://pmkisan.gov.in",
+    "last_verified": "2026-11-01"
+  },
+  {
+    "id": "ayushman-bharat",
+    "name": "Ayushman Bharat PM-JAY",
+    "state": "All",
+    "occupations": ["Farmer", "Labourer", "Unemployed", "Self-employed", "Homemaker"],
+    "income_limit": 300000,
+    "eligibility_notes": "Families identified as deprived in the SECC 2011 database, plus occupational categories such as rag pickers and street vendors. Check eligibility via the PM-JAY portal.",
+    "benefit": "Health cover of ₹5 lakh per family per year for secondary and tertiary hospitalisation",
+    "documents": ["Aadhaar Card", "Ration Card", "Income Certificate"],
+    "portal": "https://pmjay.gov.in",
+    "last_verified": "2026-11-01"
+  },
+  {
+    "id": "nsp-scholarship",
     "name": "National Scholarship Portal",
     "state": "All",
-    "occupation": "Student",
+    "occupations": ["Student"],
+    "income_limit": 250000,
+    "eligibility_notes": "Varies by scheme. Most central scholarships require family income below ₹2.5 lakh and minimum attendance or marks. Verify the specific scholarship on the portal.",
+    "benefit": "Tuition and maintenance allowance depending on the specific scholarship",
+    "documents": ["Aadhaar Card", "Income Certificate", "Previous year mark sheet", "Bank passbook", "Institute verification"],
+    "portal": "https://scholarships.gov.in",
+    "last_verified": "2026-11-01"
+  },
+  {
+    "id": "pmay-g",
+    "name": "Pradhan Mantri Awas Yojana (Gramin)",
+    "state": "All",
+    "occupations": ["Farmer", "Labourer", "Unemployed", "Self-employed"],
     "income_limit": 300000,
-    "benefit": "Scholarship support"
+    "eligibility_notes": "Houseless families and those living in kutcha or dilapidated houses, identified through SECC 2011 and verified by the Gram Sabha.",
+    "benefit": "Assistance for construction of a pucca house with basic amenities",
+    "documents": ["Aadhaar Card", "Job Card (MGNREGA)", "Bank passbook", "SECC verification"],
+    "portal": "https://pmayg.nic.in",
+    "last_verified": "2026-11-01"
   },
   {
-    "name": "PM Kisan",
+    "id": "pmuy",
+    "name": "Pradhan Mantri Ujjwala Yojana",
     "state": "All",
-    "occupation": "Farmer",
-    "income_limit": 1000000,
-    "benefit": "Income support for farmers"
+    "occupations": ["Homemaker", "Labourer", "Farmer", "Unemployed"],
+    "income_limit": 300000,
+    "eligibility_notes": "Adult women from poor households without an existing LPG connection. Priority to SC/ST, PDS beneficiaries, and other deprived categories.",
+    "benefit": "Free LPG connection with first refill and stove",
+    "documents": ["Aadhaar Card", "Ration Card", "Bank passbook", "Address proof"],
+    "portal": "https://www.pmuy.gov.in",
+    "last_verified": "2026-11-01"
   },
   {
-    "name": "Skill India",
+    "id": "skill-india",
+    "name": "Skill India Mission (PMKVY)",
     "state": "All",
-    "occupation": "Unemployed",
-    "income_limit": 1000000,
-    "benefit": "Free skill training"
+    "occupations": ["Unemployed", "Student", "Labourer"],
+    "income_limit": null,
+    "eligibility_notes": "Open to youth seeking short-term skill training. No income ceiling. Age typically 15-45 depending on the course.",
+    "benefit": "Free short-term skill training with certification and placement assistance",
+    "documents": ["Aadhaar Card", "Educational certificates", "Bank passbook"],
+    "portal": "https://www.pmkvyofficial.org",
+    "last_verified": "2026-11-01"
+  },
+  {
+    "id": "mudra-shishu",
+    "name": "Pradhan Mantri MUDRA Yojana (Shishu)",
+    "state": "All",
+    "occupations": ["Self-employed", "Unemployed"],
+    "income_limit": null,
+    "eligibility_notes": "Non-farm micro or small enterprise seeking a loan up to ₹50,000 under the Shishu category. No income ceiling.",
+    "benefit": "Collateral-free loan up to ₹50,000",
+    "documents": ["Aadhaar Card", "Business plan or proof of activity", "Bank statement", "Address proof"],
+    "portal": "https://www.mudra.org.in",
+    "last_verified": "2026-11-01"
+  },
+  {
+    "id": "pmfby",
+    "name": "Pradhan Mantri Fasal Bima Yojana",
+    "state": "All",
+    "occupations": ["Farmer"],
+    "income_limit": null,
+    "eligibility_notes": "Farmers growing notified crops in notified areas, including sharecroppers and tenant farmers with valid land records.",
+    "benefit": "Crop insurance covering yield loss from natural calamities, pests and disease",
+    "documents": ["Aadhaar Card", "Land records or tenancy agreement", "Bank passbook", "Sowing certificate"],
+    "portal": "https://pmfby.gov.in",
+    "last_verified": "2026-11-01"
+  },
+  {
+    "id": "apy",
+    "name": "Atal Pension Yojana",
+    "state": "All",
+    "occupations": ["Unemployed", "Self-employed", "Labourer", "Farmer"],
+    "income_limit": null,
+    "eligibility_notes": "Indian citizens aged 18-40 with a savings bank account. Income-tax payers are not eligible.",
+    "benefit": "Guaranteed pension of ₹1,000 to ₹5,000 per month after age 60",
+    "documents": ["Aadhaar Card", "Savings bank account", "Mobile number"],
+    "portal": "https://www.npscra.nsdl.co.in",
+    "last_verified": "2026-11-01"
+  },
+  {
+    "id": "pmsby",
+    "name": "Pradhan Mantri Suraksha Bima Yojana",
+    "state": "All",
+    "occupations": ["Farmer", "Labourer", "Unemployed", "Self-employed", "Student", "Homemaker"],
+    "income_limit": null,
+    "eligibility_notes": "Bank account holders aged 18-70. Auto-debit of ₹20 per year from the linked account.",
+    "benefit": "Accidental death and disability cover of ₹2 lakh",
+    "documents": ["Aadhaar Card", "Savings bank account"],
+    "portal": "https://www.jansuraksha.gov.in",
+    "last_verified": "2026-11-01"
+  },
+  {
+    "id": "pmjdy",
+    "name": "Pradhan Mantri Jan Dhan Yojana",
+    "state": "All",
+    "occupations": ["Farmer", "Labourer", "Unemployed", "Self-employed", "Student", "Homemaker"],
+    "income_limit": null,
+    "eligibility_notes": "Any Indian citizen aged 10 or above without an existing bank account.",
+    "benefit": "Zero-balance bank account with RuPay card and overdraft facility",
+    "documents": ["Aadhaar Card", "Passport-size photograph"],
+    "portal": "https://pmjdy.gov.in",
+    "last_verified": "2026-11-01"
+  },
+  {
+    "id": "nsap-old-age",
+    "name": "National Social Assistance Programme - Old Age Pension",
+    "state": "All",
+    "occupations": ["Unemployed", "Homemaker", "Labourer", "Farmer"],
+    "income_limit": 100000,
+    "eligibility_notes": "Applicants aged 60 or above belonging to a below-poverty-line household as per state BPL lists. State top-ups vary.",
+    "benefit": "Monthly pension, amount varies by state",
+    "documents": ["Aadhaar Card", "Age proof", "BPL card", "Bank passbook"],
+    "portal": "https://nsap.nic.in",
+    "last_verified": "2026-11-01"
   }
 ]
