@@ -142,5 +142,17 @@
     "documents": ["Aadhaar Card", "Age proof", "BPL card", "Bank passbook"],
     "portal": "https://nsap.nic.in",
     "last_verified": "2026-11-01"
-  }
+  },
+  {
+  "id": "tn-magalir-urimai",
+  "name": "Tamil Nadu Magalir Urimai Thogai",
+  "state": "Tamil Nadu",
+  "occupations": ["Homemaker", "Labourer", "Farmer", "Unemployed"],
+  "income_limit": 250000,
+  "eligibility_notes": "Women heads of family in Tamil Nadu below the income threshold. Verify current criteria on the state portal.",
+  "benefit": "Monthly basic income support",
+  "documents": ["Aadhaar Card", "Ration Card", "Bank passbook"],
+  "portal": "https://www.tn.gov.in",
+  "last_verified": "2026-11-01"
+}
 ]
