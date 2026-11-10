@@ -95,16 +95,16 @@ else:
             st.link_button("Open official portal", scheme["portal"])
 
     st.divider()
-#     st.subheader("Your action plan")
-#     st.markdown(explain_and_plan(profile, eligible))
-#
-# if result["near_miss"]:
-#     st.divider()
-#     st.subheader("Close, but not eligible")
-#     st.caption("These schemes have income limits you are just above.")
-#     for scheme in result["near_miss"]:
-#         with st.container(border=True):
-#             st.write(f"**{scheme['name']}**")
-#             for reason in scheme["reasons"]:
-#                 st.write(f"- {reason}")
-#             st.link_button("Check official rules", scheme["portal"])
+    st.subheader("Your action plan")
+    st.markdown(explain_and_plan(profile, eligible))
+
+if result["near_miss"]:
+    st.divider()
+    st.subheader("Close, but not eligible")
+    st.caption("These schemes have income limits you are just above.")
+    for scheme in result["near_miss"]:
+        with st.container(border=True):
+            st.write(f"**{scheme['name']}**")
+            for reason in scheme["reasons"]:
+                st.write(f"- {reason}")
+            st.link_button("Check official rules", scheme["portal"])
