@@ -1,0 +1,23 @@
+[
+  {
+    "name": "National Scholarship Portal",
+    "state": "All",
+    "occupation": "Student",
+    "income_limit": 300000,
+    "benefit": "Scholarship support"
+  },
+  {
+    "name": "PM Kisan",
+    "state": "All",
+    "occupation": "Farmer",
+    "income_limit": 1000000,
+    "benefit": "Income support for farmers"
+  },
+  {
+    "name": "Skill India",
+    "state": "All",
+    "occupation": "Unemployed",
+    "income_limit": 1000000,
+    "benefit": "Free skill training"
+  }
+]
