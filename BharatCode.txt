@@ -15,9 +15,9 @@ Problem Solved:
 Many citizens are unaware of welfare schemes and struggle to understand eligibility requirements and application processes.
 
 Author:
-<your name>
+Sree Sai Nandini Gundraju
 
 GitHub Repository:
-https://github.com/<your-username>/bharatassist-ai
+https://github.com/Sree2011/bharatassist-ai
 
 Powered by BharatCode.
