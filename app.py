@@ -38,65 +38,73 @@ with st.sidebar:
         step=10000,
     )
     state = st.selectbox("State", STATES)
-    language = st.selectbox(
-        "Explanation language",
-        ["English", "Hindi", "Tamil", "Bengali", "Telugu", "Marathi"],
-    )
 
     find = st.button("Find eligible schemes", type="primary", use_container_width=True)
 
 # ---------------------------------------------------------------- results
+# Results are cached in session_state so they survive the re-run triggered
+# by clicking a link button or expanding a section.
 
 if find:
     profile = citizen_profiler(age, state, occupation, income)
-    result = scheme_finder(profile)
-    eligible = result["eligible"]
+    st.session_state["profile"] = profile
+    st.session_state["result"] = scheme_finder(profile)
 
-    if not eligible:
-        st.warning("No schemes matched your profile.")
-    else:
-        st.success(f"Found {len(eligible)} scheme(s) you may qualify for.")
+result = st.session_state.get("result")
+profile = st.session_state.get("profile")
 
-        for scheme in eligible:
-            with st.container(border=True):
-                head, badge = st.columns([4, 1])
-                with head:
-                    st.subheader(scheme["name"])
-                with badge:
-                    st.caption(f"Verified {scheme['last_verified']}")
+if result is None:
+    st.info(
+        "Enter your details in the sidebar and click **Find eligible schemes** "
+        "to see what you may qualify for."
+    )
+    st.stop()
 
-                st.write(f"**Benefit:** {scheme['benefit']}")
+eligible = result["eligible"]
 
-                st.write("**Why you qualify**")
-                for reason in scheme["reasons"]:
-                    st.write(f"- {reason}")
+if not eligible:
+    st.warning(
+        "No schemes matched your profile. Try a different occupation, "
+        "or check the near-miss schemes below."
+    )
+else:
+    st.success(f"Found {len(eligible)} scheme(s) you may qualify for.")
 
-                with st.expander("Required documents"):
-                    for doc in document_agent(scheme):
-                        st.write(f"✅ {doc}")
+    for scheme in eligible:
+        with st.container(border=True):
+            head, badge = st.columns([4, 1])
+            with head:
+                st.subheader(scheme["name"])
+            with badge:
+                st.caption(f"Verified {scheme['last_verified']}")
 
-                with st.expander("Application roadmap"):
-                    for i, step in enumerate(planner_agent(scheme), 1):
-                        st.write(f"{i}. {step}")
+            st.write(f"**Benefit:** {scheme['benefit']}")
 
-                st.link_button("Open official portal", scheme["portal"])
+            st.write("**Why you qualify**")
+            for reason in scheme["reasons"]:
+                st.write(f"- {reason}")
 
-        st.divider()
-        if st.button("Generate personalised explanation and plan"):
-            with st.spinner("Thinking..."):
-                try:
-                    text = explain_and_plan(profile, eligible, language)
-                    st.markdown(text)
-                except Exception as exc:
-                    st.error(f"Could not generate explanation: {exc}")
+            with st.expander("Required documents"):
+                for doc in document_agent(scheme):
+                    st.write(f"✅ {doc}")
 
-    if result["near_miss"]:
-        st.divider()
-        st.subheader("Close, but not eligible")
-        st.caption("These schemes have income limits you are just above.")
-        for scheme in result["near_miss"]:
-            with st.container(border=True):
-                st.write(f"**{scheme['name']}**")
-                for reason in scheme["reasons"]:
-                    st.write(f"- {reason}")
-                st.link_button("Check official rules", scheme["portal"])
+            with st.expander("Application roadmap"):
+                for i, step in enumerate(planner_agent(scheme), 1):
+                    st.write(f"{i}. {step}")
+
+            st.link_button("Open official portal", scheme["portal"])
+
+    st.divider()
+#     st.subheader("Your action plan")
+#     st.markdown(explain_and_plan(profile, eligible))
+#
+# if result["near_miss"]:
+#     st.divider()
+#     st.subheader("Close, but not eligible")
+#     st.caption("These schemes have income limits you are just above.")
+#     for scheme in result["near_miss"]:
+#         with st.container(border=True):
+#             st.write(f"**{scheme['name']}**")
+#             for reason in scheme["reasons"]:
+#                 st.write(f"- {reason}")
+#             st.link_button("Check official rules", scheme["portal"])
